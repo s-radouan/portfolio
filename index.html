@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radouan Sayah — Ingénieur Automatisation & Systèmes Embarqués</title>
+<meta name="description" content="Portfolio de Radouan Sayah, ingénieur industriel en informatique spécialisé en automatisation industrielle, IoT et systèmes embarqués.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1016;
+    --bg-panel:#121924;
+    --bg-raised:#19222E;
+    --line:#243040;
+    --line-strong:#3B4C60;
+    --blue:#6FA8DC;
+    --blue-dim:#3E6486;
+    --amber:#E3A94A;
+    --green:#5FBF8F;
+    --text:#E8EDF2;
+    --text-muted:#93A1B0;
+    --text-faint:#5C6A79;
+    --mono:'IBM Plex Mono', 'Courier New', monospace;
+    --sans:'IBM Plex Sans', -apple-system, sans-serif;
+    --display:'Space Grotesk', var(--sans);
+    --maxw:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:48px 48px;
+    background-position:-1px -1px;
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%;}
+
+  a{color:var(--blue);}
+  a:hover{color:#8FBEE8;}
+
+  .skip-link{
+    position:absolute; left:-999px; top:0;
+    background:var(--amber); color:#0B1016; padding:0.75rem 1.25rem;
+    font-family:var(--mono); font-size:0.85rem; z-index:100;
+  }
+  .skip-link:focus{left:1rem; top:1rem;}
+
+  :focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  h1,h2,h3{
+    font-family:var(--display);
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.5rem;}
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,16,22,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:var(--maxw); margin:0 auto; padding:0 1.5rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:56px;
+  }
+  .topbar-id{
+    font-family:var(--mono); font-size:0.8rem; color:var(--text-faint);
+    letter-spacing:0.04em;
+  }
+  .topbar nav ul{
+    display:flex; gap:1.5rem; list-style:none; margin:0; padding:0;
+  }
+  .topbar nav a{
+    color:var(--text-muted); text-decoration:none; font-size:0.9rem;
+    padding:0.25rem 0; border-bottom:1px solid transparent;
+  }
+  .topbar nav a:hover, .topbar nav a:focus-visible{
+    color:var(--text); border-bottom-color:var(--amber);
+  }
+  @media (max-width:640px){
+    .topbar nav ul{gap:0.9rem;}
+    .topbar nav a{font-size:0.78rem;}
+    .topbar-id{display:none;}
+  }
+
+  /* ---------- corner-frame panel motif ---------- */
+  .panel{
+    position:relative;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    padding:2rem;
+  }
+  .panel::before, .panel::after,
+  .panel .tick-br, .panel .tick-bl{
+    content:''; position:absolute; width:10px; height:10px;
+    border-color:var(--line-strong); border-style:solid; border-width:0;
+  }
+  .panel::before{ top:-1px; left:-1px; border-top-width:2px; border-left-width:2px; }
+  .panel::after{ top:-1px; right:-1px; border-top-width:2px; border-right-width:2px; }
+  .panel .tick-bl{ bottom:-1px; left:-1px; border-bottom-width:2px; border-left-width:2px; }
+  .panel .tick-br{ bottom:-1px; right:-1px; border-bottom-width:2px; border-right-width:2px; }
+
+  .tag-label{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em;
+    color:var(--text-faint); text-transform:uppercase;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:4.5rem 0 3rem; }
+  .hero .panel{ padding:2.5rem clamp(1.5rem,5vw,3rem); }
+  .hero-ref{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.75rem; }
+  .hero-ref .tag-label{ color:var(--blue); }
+  .status-row{ display:flex; align-items:center; gap:0.5rem; font-family:var(--mono); font-size:0.78rem; color:var(--green); }
+  .status-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--green);
+    box-shadow:0 0 0 0 rgba(95,191,143,0.6);
+    animation:pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(95,191,143,0.5); }
+    70%{ box-shadow:0 0 0 8px rgba(95,191,143,0); }
+    100%{ box-shadow:0 0 0 0 rgba(95,191,143,0); }
+  }
+
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.1rem);
+    color:var(--text);
+    margin-bottom:0.5rem;
+    line-height:1.05;
+  }
+  .hero .role{
+    font-family:var(--sans); font-weight:500; font-size:clamp(1rem,2.4vw,1.2rem);
+    color:var(--blue); margin-bottom:0.25rem;
+  }
+  .hero .subrole{ color:var(--text-muted); font-size:0.95rem; margin-bottom:1.75rem; }
+
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:1.5rem 2.25rem;
+    margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--line);
+    font-family:var(--mono); font-size:0.85rem;
+  }
+  .hero-meta div{ color:var(--text); }
+  .hero-meta span{ display:block; color:var(--text-faint); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.2rem; }
+  .hero-meta a{ text-decoration:none; }
+  .hero-meta a:hover{ text-decoration:underline; }
+
+  /* ---------- sections ---------- */
+  .section{ padding:3.25rem 0; }
+  .section-head{ display:flex; align-items:baseline; gap:0.9rem; margin-bottom:1.75rem; }
+  .section-head .idx{ font-family:var(--mono); color:var(--blue-dim); font-size:0.95rem; }
+  .section-head h2{ font-size:1.5rem; }
+  .section > .wrap > p.lede{ color:var(--text-muted); max-width:65ch; margin:-1rem 0 1.75rem; }
+
+  /* about */
+  .about-text{ max-width:68ch; color:var(--text); font-size:1.02rem; }
+  .about-text p + p{ margin-top:1rem; }
+  .about-grid{ display:grid; grid-template-columns:1.6fr 1fr; gap:1.5rem; align-items:start; }
+  @media (max-width:720px){ .about-grid{ grid-template-columns:1fr; } }
+  .fact-list{ list-style:none; margin:0; padding:0; font-size:0.9rem; }
+  .fact-list li{ display:flex; justify-content:space-between; gap:1rem; padding:0.6rem 0; border-bottom:1px solid var(--line); }
+  .fact-list li:last-child{ border-bottom:none; }
+  .fact-list span:first-child{ color:var(--text-faint); font-family:var(--mono); font-size:0.78rem; text-transform:uppercase; }
+  .fact-list span:last-child{ color:var(--text); text-align:right; }
+
+  /* skills */
+  .skill-groups{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; }
+  .skill-group{ padding:1.5rem; }
+  .skill-group h3{ font-size:0.95rem; font-family:var(--sans); font-weight:600; color:var(--text); margin-bottom:0.2rem; }
+  .skill-group .tag-label{ display:block; margin-bottom:0.85rem; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:0.4rem; }
+  .chip{
+    font-family:var(--mono); font-size:0.76rem; color:var(--text-muted);
+    background:var(--bg-raised); border:1px solid var(--line-strong);
+    padding:0.28rem 0.55rem;
+  }
+
+  /* experience ladder timeline */
+  .ladder{ position:relative; padding-left:2.5rem; }
+  .ladder::before{
+    content:''; position:absolute; left:0.65rem; top:0.5rem; bottom:0.5rem; width:2px;
+    background:var(--line-strong);
+  }
+  .rung{ position:relative; padding-bottom:2.75rem; }
+  .rung:last-child{ padding-bottom:0; }
+  .rung::before{
+    content:''; position:absolute; left:-2.5rem; top:0.35rem; width:1.35rem; height:1.35rem;
+    border:2px solid var(--amber); background:var(--bg);
+  }
+  .rung::after{
+    content:''; position:absolute; left:-1.15rem; top:1rem; width:1.15rem; height:2px;
+    background:var(--line-strong);
+  }
+  .rung-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:0.6rem; margin-bottom:0.35rem; }
+  .rung-head h3{ font-size:1.15rem; }
+  .rung-date{ font-family:var(--mono); font-size:0.78rem; color:var(--amber); }
+  .rung-org{ color:var(--text-muted); font-size:0.9rem; margin-bottom:0.9rem; }
+  .rung p{ margin:0 0 0.75rem; max-width:70ch; color:var(--text); }
+  .rung ul{ margin:0 0 0.75rem; padding-left:1.15rem; color:var(--text); }
+  .rung ul li{ margin-bottom:0.4rem; }
+  .rung ul li::marker{ color:var(--blue-dim); }
+
+  /* project */
+  .project-panel{ padding:2rem clamp(1.25rem,4vw,2.5rem); }
+  .project-panel h3{ font-size:1.3rem; margin-bottom:0.3rem; }
+  .project-meta{ font-family:var(--mono); font-size:0.78rem; color:var(--text-faint); margin-bottom:1.25rem; }
+  .project-panel p{ color:var(--text); max-width:72ch; margin:0 0 1rem; }
+  .project-panel ol{ padding-left:1.25rem; margin:0 0 1.25rem; color:var(--text); }
+  .project-panel ol li{ margin-bottom:0.55rem; padding-left:0.25rem; }
+  .project-panel ol li::marker{ font-family:var(--mono); color:var(--amber); font-size:0.85rem; }
+
+  .diagram{ display:block; margin:1.5rem 0; border:1px solid var(--line); background:var(--bg-raised); padding:1rem; }
+  .diagram svg{ display:block; width:100%; height:auto; }
+
+  /* ---------- photo slots (à remplacer par tes vraies photos) ---------- */
+  .photo-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:0.75rem; margin:1.5rem 0; }
+  .photo-slot, .photo-img{
+    aspect-ratio:4/3;
+    border:1px dashed var(--line-strong);
+    background:var(--bg-raised);
+    border-radius:0;
+  }
+  .photo-slot{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem;
+    color:var(--text-faint); font-family:var(--mono); font-size:0.72rem; text-align:center; padding:0.75rem;
+  }
+  .photo-slot svg{ width:26px; height:26px; opacity:0.5; }
+  .photo-img{ border-style:solid; width:100%; height:100%; object-fit:cover; display:block; }
+
+  .hero-top{ display:flex; gap:2rem; align-items:flex-start; justify-content:space-between; flex-wrap:wrap-reverse; }
+  .hero-headtext{ flex:1 1 320px; min-width:0; }
+  .hero-photo.photo-slot, .hero-photo.photo-img{ flex:0 0 auto; width:140px; height:140px; aspect-ratio:1/1; }
+  @media (max-width:560px){ .hero-photo.photo-slot, .hero-photo.photo-img{ width:96px; height:96px; } }
+
+  /* ---------- buttons / CTA ---------- */
+  .cta-row{ display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.75rem; }
+  .btn{
+    display:inline-flex; align-items:center; gap:0.55rem;
+    font-family:var(--mono); font-size:0.82rem;
+    padding:0.65rem 1.1rem; border:1px solid var(--amber);
+    background:var(--amber); color:#0B1016; text-decoration:none;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover, .btn:focus-visible{ background:transparent; color:var(--amber); }
+  .btn svg{ width:16px; height:16px; }
+  .btn-outline{ background:transparent; color:var(--text); border-color:var(--line-strong); }
+  .btn-outline:hover, .btn-outline:focus-visible{ border-color:var(--amber); color:var(--amber); background:transparent; }
+
+  /* education */
+  .edu-item{ padding:1.5rem; }
+  .edu-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
+  .edu-item h3{ font-size:1.05rem; margin-bottom:0.3rem; }
+  .edu-item .rung-date{ display:block; margin-bottom:0.6rem; }
+  .edu-item p{ color:var(--text-muted); margin:0; font-size:0.9rem; }
+  .mention{ display:inline-block; margin-top:0.6rem; font-family:var(--mono); font-size:0.72rem; color:var(--green); border:1px solid var(--green); padding:0.2rem 0.5rem; }
+
+  /* contact */
+  .contact-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:1.5rem; }
+  @media (max-width:720px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-panel{ padding:2rem; }
+  .contact-panel h3{ font-size:1.2rem; margin-bottom:0.5rem; }
+  .contact-panel p{ color:var(--text-muted); max-width:48ch; margin:0 0 1.5rem; }
+  .contact-list{ list-style:none; margin:0; padding:0; }
+  .contact-list li{ margin-bottom:0.9rem; }
+  .contact-list a{ font-family:var(--mono); font-size:0.95rem; text-decoration:none; display:flex; align-items:center; gap:0.6rem; }
+  .contact-list span.k{ color:var(--text-faint); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:0.15rem; font-family:var(--mono); }
+  .side-list{ list-style:none; margin:0; padding:0; font-size:0.88rem; }
+  .side-list li{ display:flex; justify-content:space-between; padding:0.55rem 0; border-bottom:1px solid var(--line); color:var(--text-muted); }
+  .side-list li:last-child{ border-bottom:none; }
+  .side-list span:last-child{ color:var(--text); }
+
+  footer{
+    border-top:1px solid var(--line); padding:2rem 0; margin-top:1rem;
+    font-family:var(--mono); font-size:0.75rem; color:var(--text-faint);
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu principal</a>
+
+<!--
+  COMMENT AJOUTER TES PHOTOS
+  ==========================
+  Cherche "photo-slot" dans ce fichier (Ctrl+F) : chaque bloc <div class="photo-slot">...</div>
+  est un emplacement réservé. Pour mettre une vraie photo, remplace le bloc ENTIER par :
+
+      <img class="photo-img" src="photos/nom-du-fichier.jpg" alt="Description de la photo">
+
+  - Crée un dossier "photos" à côté de ce fichier .html et mets-y tes images
+    (ou adapte le chemin dans "src" si tu les ranges ailleurs).
+  - "alt" doit décrire la photo en quelques mots (utile pour l'accessibilité et le SEO).
+  - Le cadrage s'ajuste automatiquement (object-fit: cover), donc pas besoin de
+    redimensionner tes photos avant, une résolution raisonnable (~1200px de large) suffit.
+  - Tu peux dupliquer ou supprimer des <div class="photo-slot">...</div> dans un
+    .photo-grid si tu veux plus ou moins de photos à un endroit donné.
+-->
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-id">SR // PORTFOLIO</span>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="#apropos">Profil</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#experience">Expérience</a></li>
+        <li><a href="#projet">Projet</a></li>
+        <li><a href="#formation">Formation</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO / NAMEPLATE -->
+  <section class="hero wrap" aria-label="Présentation">
+    <div class="panel">
+      <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+      <div class="hero-top">
+        <div class="hero-headtext">
+          <div class="hero-ref">
+            <span class="tag-label">Fiche technique </span>
+            <div class="status-row"><span class="status-dot" aria-hidden="true"></span>Disponible pour un premier poste</div>
+          </div>
+          <p class="role">Ingénieur industriel en informatique</p>
+          <h1>Sayah Radouan</h1>
+          <p class="subrole">Spécialisation automatisation industrielle & systèmes embarqués</p>
+        </div>
+        <div class="photo-slot hero-photo" aria-hidden="true">
+          <img class="photo-img" src="photos/PP.jpg" alt="Description de la photo">
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <div><span>Localisation</span>Châtelet, région de Charleroi (BE)</div>
+        <div><span>Email</span><a href="mailto:sayahradouan.pro@gmail.com">sayahradouan.pro@gmail.com</a></div>
+        <div><span>Téléphone</span><a href="tel:+32489554790">0489 55 47 90</a></div>
+        <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/sayah-radouan/" target="_blank" rel="noopener">linkedin.com/in/sayah-radouan</a></div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="cv-radouan.pdf" target="_blank" rel="noopener" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          Télécharger mon CV (PDF)
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="apropos" class="section wrap" aria-labelledby="apropos-title">
+    <div class="section-head"><span class="idx">01</span><h2 id="apropos-title">Profil</h2></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Je viens d'un parcours qui s'est construit par la pratique plutôt que par un plan tracé d'avance. J'ai commencé par un bachelier professionnalisant en informatique industrielle avant de poursuivre en master, et c'est en touchant à plusieurs domaines en cours de route que j'ai compris ce qui me correspondait vraiment&nbsp;: l'automatisation, les systèmes embarqués et l'IoT.</p>
+        <p>Mon stage de fin d'études chez Aperam, réalisé en partenariat avec la Siemens Academy, m'a donné une première expérience concrète en environnement industriel&nbsp;: programmation d'automate, jumeau numérique, interfaces de supervision. J'y ai confirmé ce que je cherchais&nbsp;: des projets où le code pilote vraiment quelque chose de physique.</p>
+        <p>Aujourd'hui, je cherche un premier poste dans l'automatisation industrielle ou l'IoT, pour continuer à mettre ces compétences en pratique sur des installations réelles.</p>
+      </div>
+      <ul class="fact-list" aria-label="Informations complémentaires">
+        <li><span>Âge</span><span>25 ans</span></li>
+        <li><span>Permis</span><span>B</span></li>
+        <li><span>Langues</span><span>Français, Anglais</span></li>
+        <li><span>Mobilité</span><span>Hainaut</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="competences" class="section wrap" aria-labelledby="competences-title">
+    <div class="section-head"><span class="idx">02</span><h2 id="competences-title">Compétences</h2></div>
+    <div class="skill-groups">
+      <div class="panel skill-group">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <h3>Automatisation industrielle</h3>
+        <span class="tag-label">PLC · SCADA · HMI</span>
+        <div class="chip-row">
+          <span class="chip">TIA Portal</span><span class="chip">WinCC</span><span class="chip">NX MCD</span>
+          <span class="chip">PLCSIM</span><span class="chip">LAD / FBD / SCL / ST</span>
+          <span class="chip">Profinet</span><span class="chip">Modbus</span><span class="chip">OPC-UA</span>
+        </div>
+      </div>
+      <div class="panel skill-group">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <h3>IoT & systèmes connectés</h3>
+        <span class="tag-label">Capteurs · réseaux · supervision</span>
+        <div class="chip-row">
+          <span class="chip">ESP32</span><span class="chip">Arduino</span><span class="chip">STM32</span>
+          <span class="chip">Raspberry Pi</span><span class="chip">MQTT</span><span class="chip">FreeRTOS</span>
+          <span class="chip">Node-RED</span><span class="chip">Grafana</span>
+        </div>
+      </div>
+      <div class="panel skill-group">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <h3>Systèmes embarqués & FPGA</h3>
+        <span class="tag-label">Logique programmable</span>
+        <div class="chip-row">
+          <span class="chip">VHDL</span><span class="chip">Vivado</span><span class="chip">Vitis</span>
+        </div>
+      </div>
+      <div class="panel skill-group">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <h3>Langages de programmation</h3>
+        <span class="tag-label">Développement</span>
+        <div class="chip-row">
+          <span class="chip">C</span><span class="chip">C++</span><span class="chip">Python</span>
+          <span class="chip">Bash / Shell</span><span class="chip">SQL</span><span class="chip">Kotlin</span>
+        </div>
+      </div>
+      <div class="panel skill-group">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <h3>Gestion de projet</h3>
+        <span class="tag-label">Méthodes</span>
+        <div class="chip-row">
+          <span class="chip">PRINCE2</span><span class="chip">Scrum</span><span class="chip">Agile</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section wrap" aria-labelledby="experience-title">
+    <div class="section-head"><span class="idx">03</span><h2 id="experience-title">Expérience professionnelle</h2></div>
+    <div class="ladder">
+
+      <article class="rung">
+        <div class="rung-head">
+          <h3>Stage — Station de formation virtuelle</h3>
+          <span class="rung-date">Févr. – juin 2025</span>
+        </div>
+        <p class="rung-org">Aperam, Châtelet — en partenariat avec la Siemens Academy</p>
+        <p>Aperam exploite un laminoir à chaud qui transforme des brames d'acier en bobines, utilisées ensuite dans l'automobile et la construction. L'objectif du stage était d'améliorer la formation des opérateurs sur le dégrossisseur, via une station virtuelle bâtie sur un jumeau numérique de la machine, créé avec NX MCD.</p>
+        <ul>
+          <li>Adaptation du programme automate S7 réel pour le rendre compatible avec le jumeau numérique — la tâche la plus longue du stage</li>
+          <li>Programmation de trois joysticks de commande&nbsp;: avance/recul de la brame, ouverture/fermeture du guide, écartement des cylindres</li>
+          <li>Analyse fonctionnelle du comportement en cas d'incident avec le modèle GEMMA</li>
+          <li>Création de scénarios de production et de panne (blocage de brame, collision entre deux brames)</li>
+          <li>Développement d'interfaces WinCC dédiées au formateur, pour l'envoi de scénarios et la création de défauts</li>
+        </ul>
+        <div class="chip-row">
+          <span class="chip">TIA Portal</span><span class="chip">WinCC</span><span class="chip">NX MCD</span><span class="chip">PLCSIM</span><span class="chip">GEMMA</span>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-slot"><img class="photo-img" src="photos/cabine.jpg" alt="cabine"></div>
+          <div class="photo-slot"><img class="photo-img" src="photos/site.png" alt="site"></div>
+          <div class="photo-slot"><img class="photo-img" src="photos/station.jpg" alt="station"></div>
+        </div>
+      </article>
+
+      <article class="rung">
+        <div class="rung-head">
+          <h3>Stage — Verre connecté pour le suivi de l'hydratation</h3>
+          <span class="rung-date">Févr. – juin 2022</span>
+        </div>
+        <p class="rung-org">Gembloux Agro-Bio Tech</p>
+        <p>Ce laboratoire étudie le comportement du consommateur alimentaire, à l'aide d'objets connectés comme des couverts, verres et assiettes. Mon projet consistait à concevoir un verre connecté capable de mesurer et transmettre les habitudes d'hydratation d'un utilisateur.</p>
+        <ul>
+          <li>Programmation d'un microcontrôleur à module WiFi intégré, pilotant un accéléromètre et un lecteur de carte SD</li>
+          <li>Archivage des mesures à double niveau&nbsp;: base de données et carte SD, à chaque prise de mesure</li>
+          <li>Mise en place d'un Raspberry Pi comme serveur, faisant tourner la base de données, MQTT et Node-RED</li>
+          <li>Développement d'une application Android en Kotlin&nbsp;: connexion sécurisée, affichage des données, graphique du volume dans le temps, page d'administration</li>
+        </ul>
+        <div class="chip-row">
+          <span class="chip">ESP32</span><span class="chip">Raspberry Pi</span><span class="chip">MQTT</span><span class="chip">Node-RED</span><span class="chip">Kotlin</span><span class="chip">Android</span>
+        </div>
+        <div class="photo-grid">
+          <img class="photo-img" src="photos/Verre.png" alt="Prototype du verre connecté" style="object-fit: contain;">
+          <img class="photo-img" src="photos/App.png" alt="Écran de l'application Android" style="object-fit: contain;">
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="projet" class="section wrap" aria-labelledby="projet-title">
+    <div class="section-head"><span class="idx">04</span><h2 id="projet-title">Projet académique</h2></div>
+    <div class="panel project-panel">
+      <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+      <h3>Automatisation d'une ligne de conditionnement de jus de fruits</h3>
+      <p class="project-meta">Master 2 — 2025 · Projet scolaire simulant une installation industrielle réelle</p>
+      <p>Le projet consistait à automatiser une ligne où des bouteilles se déplacent sur un convoyeur&nbsp;: à chaque poste, le convoyeur s'arrête et l'opération prévue s'exécute — ouverture de la vanne, remplissage, fermeture de la vanne — avant que la bouteille reprenne sa route.</p>
+
+      <div class="diagram" role="img" aria-label="Schéma simplifié de la ligne : convoyeur, poste de remplissage avec vanne et cuve, poste de mélange, capteurs de présence, et supervision reliée à l'automate.">
+        <svg viewBox="0 0 760 170" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="130" x2="740" y2="130" stroke="#3B4C60" stroke-width="2"/>
+          <g fill="none" stroke="#6FA8DC" stroke-width="1.6">
+            <rect x="150" y="40" width="60" height="60" />
+            <rect x="380" y="40" width="60" height="60" />
+          </g>
+          <text x="180" y="35" fill="#93A1B0" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">CUVE 1</text>
+          <text x="410" y="35" fill="#93A1B0" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">CUVE 2</text>
+          <line x1="180" y1="100" x2="180" y2="130" stroke="#E3A94A" stroke-width="2"/>
+          <line x1="410" y1="100" x2="410" y2="130" stroke="#E3A94A" stroke-width="2"/>
+          <text x="180" y="150" fill="#5C6A79" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle">Premier poste</text>
+          <text x="410" y="150" fill="#5C6A79" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle">Deuxième poste</text>
+          <rect x="60" y="120" width="22" height="20" fill="#0B1016" stroke="#5FBF8F" stroke-width="1.6"/>
+          <rect x="620" y="120" width="22" height="20" fill="#0B1016" stroke="#5FBF8F" stroke-width="1.6"/>
+          <circle cx="180" cy="125" r="3" fill="#E3A94A"/>
+          <circle cx="410" cy="125" r="3" fill="#E3A94A"/>
+          <text x="690" y="150" fill="#5C6A79" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle">Sortie</text>
+          <text x="71" y="150" fill="#5C6A79" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle">Entrée</text>
+          <line x1="180" y1="55" x2="90" y2="20" stroke="#243040" stroke-width="1"/>
+          <rect x="20" y="8" width="140" height="26" fill="none" stroke="#3B4C60" stroke-width="1"/>
+          <text x="90" y="25" fill="#6FA8DC" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle">IHM — WinCC</text>
+        </svg>
+      </div>
+
+      <ol>
+        <li>Programmation de la logique de fonctionnement sur TIA Portal&nbsp;: gestion des capteurs, des vannes, du convoyeur et des équipements de la ligne</li>
+        <li>Réalisation de la supervision avec WinCC&nbsp;: état des équipements, niveaux de cuves et alarmes visibles depuis l'IHM</li>
+        <li>Mise en place d'un mode automatique et d'un mode manuel, avec conditions de sécurité et interverrouillages pour empêcher les actions non conformes</li>
+      </ol>
+      <div class="chip-row">
+        <span class="chip">TIA Portal</span><span class="chip">WinCC</span><span class="chip">SCADA/HMI</span><span class="chip">Interverrouillages</span>
+      </div>
+      <div class="photo-grid">
+        <img class="photo-img" src="photos/process.png" alt="Prototype du verre connecté" style="object-fit: contain;">
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="formation" class="section wrap" aria-labelledby="formation-title">
+    <div class="section-head"><span class="idx">05</span><h2 id="formation-title">Formation</h2></div>
+    <div class="edu-grid">
+      <div class="panel edu-item">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <span class="rung-date">2022 – 2025</span>
+        <h3>Master en Ingénierie Informatique</h3>
+        <p>Haute École en Hainaut (HEH), Mons — option Automatisation et Systèmes embarqués</p>
+        <span class="mention">Grande distinction</span>
+      </div>
+      <div class="panel edu-item">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <span class="rung-date">2019 – 2022</span>
+        <h3>Bachelier professionnalisant en Informatique Industrielle</h3>
+        <p>Haute École Louvain en Hainaut (HELHa), Charleroi</p>
+        <span class="mention">Distinction</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section wrap" aria-labelledby="contact-title">
+    <div class="section-head"><span class="idx">06</span><h2 id="contact-title">Contact</h2></div>
+    <div class="contact-grid">
+      <div class="panel contact-panel">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <h3>Discutons de votre projet</h3>
+        <p>Ouvert aux opportunités en automatisation industrielle, IoT et systèmes embarqués, en Belgique ou à distance.</p>
+        <ul class="contact-list">
+          <li><span class="k">Email</span><a href="mailto:sayahradouan.pro@gmail.com">sayahradouan.pro@gmail.com</a></li>
+          <li><span class="k">Téléphone</span><a href="tel:+32489554790">0489 55 47 90</a></li>
+          <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/sayah-radouan/" target="_blank" rel="noopener">linkedin.com/in/sayah-radouan</a></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="tick-bl" aria-hidden="true"></span><span class="tick-br" aria-hidden="true"></span>
+        <ul class="side-list" aria-label="Informations diverses">
+          <li><span>Langues</span><span>FR, EN</span></li>
+          <li><span>Permis</span><span>B</span></li>
+          <li><span>Centres d'intérêt</span><span>Montage vidéo, 3D, sport</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Sayah Radouan — Portfolio. </div>
+</footer>
+
+</body>
+</html>
